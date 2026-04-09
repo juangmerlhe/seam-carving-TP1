@@ -1,0 +1,4 @@
+benchmark
+seam
+*.o
+experimentos/*.txt
