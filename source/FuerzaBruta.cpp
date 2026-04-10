@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Recorre recursivamente todos los caminos posibles desde (fila, col) hasta la última fila.
 void recorrerFB(const vector<vector<double>>& energia,
               int fila,
               int col,
@@ -33,6 +34,7 @@ void recorrerFB(const vector<vector<double>>& energia,
     actual.pop_back();
 }
 
+// Prueba todas las columnas de inicio y devuelve el seam de mínima energía por fuerza bruta.
 std::vector<int> encontrarSeamFuerzaBruta(const std::vector<std::vector<double>>& energia) {
     int n = energia.size();
     int m = energia[0].size();

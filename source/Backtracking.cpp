@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Igual que recorrerFB pero poda ramas cuya suma parcial ya supera la mejor conocida.
 void recorrerBT(const vector<vector<double>>& energia,
               int fila,
               int col,
@@ -39,6 +40,7 @@ void recorrerBT(const vector<vector<double>>& energia,
     actual.pop_back();
 }
 
+// Prueba todas las columnas de inicio con backtracking y devuelve el seam de mínima energía.
 std::vector<int> encontrarSeamBacktracking(const std::vector<std::vector<double>>& energia) {
     int m = energia[0].size();
 

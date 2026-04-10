@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Calcula el seam de mínima energía con programación dinámica en O(n·m).
 vector<int> encontrarSeamPD(const vector<vector<double>>& energia) {
     int n = energia.size();
     if (n == 0) return {};

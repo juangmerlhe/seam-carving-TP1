@@ -47,10 +47,10 @@ void imprimirMatriz(const std::vector<std::vector<double>>& matriz) {
 }
 
 void imprimirSeam(const std::vector<int>& seam, const std::vector<std::vector<double>>& energia) {
-    std::cout << "Seam encontrado: ";
     double total = 0.0;
     for (int f = 0; f < (int)seam.size(); f++) {
-        std::cout << "(" << f << "," << seam[f] << ") ";
+        if (f > 0) std::cout << " ";
+        std::cout << (seam[f] + 1);   // índice 1-based
         total += energia[f][seam[f]];
     }
     std::cout << "\nEnergía total: " << total << "\n";
@@ -69,8 +69,11 @@ void modoNumerico(const std::string& rutaEntrada, const std::string& algoritmo) 
     std::string rutaSalida = "output/numericos/seam_" + algoritmo + ".txt";
     std::ofstream salida(rutaSalida);
     if (salida.is_open()) {
-        for (int f = 0; f < (int)seam.size(); f++)
-            salida << "fila " << f << " -> columna " << seam[f] << "\n";
+        for (int f = 0; f < (int)seam.size(); f++) {
+            if (f > 0) salida << " ";
+            salida << (seam[f] + 1);   // índice 1-based
+        }
+        salida << "\n";
         std::cout << "Resultado guardado en " << rutaSalida << "\n";
     }
 }
