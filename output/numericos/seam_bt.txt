@@ -1,0 +1,5 @@
+fila 0 -> columna 2
+fila 1 -> columna 2
+fila 2 -> columna 3
+fila 3 -> columna 3
+fila 4 -> columna 3
