@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 fila 0 -> columna 2
 fila 1 -> columna 2
 fila 2 -> columna 3
 fila 3 -> columna 3
 fila 4 -> columna 3
+=======
+3 3 4 4 5
+>>>>>>> 4a29b05a2fc242a21bc1ac4cd9ce2316e8b3febf

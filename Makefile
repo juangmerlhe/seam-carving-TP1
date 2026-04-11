@@ -11,6 +11,12 @@ SOURCES  = $(SRCDIR)/main.cpp \
 
 TARGET = seam
 
+BENCH_SOURCES = $(SRCDIR)/benchmark.cpp \
+                $(SRCDIR)/Imagen.cpp \
+                $(SRCDIR)/FuerzaBruta.cpp \
+                $(SRCDIR)/Backtracking.cpp \
+                $(SRCDIR)/ProgramacionDinamica.cpp
+
 # ─── Targets principales ──────────────────────────────────────────────────────
 
 all: setup $(TARGET)
@@ -30,6 +36,9 @@ setup:
 		curl -sL https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h \
 		     -o $(SRCDIR)/stb_image_write.h; \
 	fi
+
+benchmark: setup $(BENCH_SOURCES)
+	$(CXX) $(CXXFLAGS) -o $@ $(BENCH_SOURCES)
 
 # ─── Ejecución ────────────────────────────────────────────────────────────────
 
@@ -57,4 +66,4 @@ clean-output:
 #   stb_image_write.h -> https://github.com/nothings/stb/blob/master/stb_image_write.h
 # y colocarlos en la carpeta source/.
 
-.PHONY: all setup run-numerico run-imagen clean clean-output
+.PHONY: all setup benchmark run-numerico run-imagen clean clean-output
