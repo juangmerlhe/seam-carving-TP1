@@ -41,8 +41,8 @@ std::vector<int> ejecutarAlgoritmo(const std::vector<std::vector<double>>& energ
 void imprimirMatriz(const std::vector<std::vector<double>>& matriz) {
     for (const auto& fila : matriz) {
         for (double val : fila)
-            std::cout << val << "\t";
-        std::cout << "\n";
+            std::cerr << val << "\t";
+        std::cerr << "\n";
     }
 }
 
@@ -53,15 +53,16 @@ void imprimirSeam(const std::vector<int>& seam, const std::vector<std::vector<do
         std::cout << (seam[f] + 1);   // índice 1-based
         total += energia[f][seam[f]];
     }
-    std::cout << "\nEnergía total: " << total << "\n";
+    std::cout << "\n";
+    std::cerr << "Energía total: " << total << "\n";
 }
 
 void modoNumerico(const std::string& rutaEntrada, const std::string& algoritmo) {
     std::vector<std::vector<double>> energia = leerMatrizEnergia(rutaEntrada);
 
-    std::cout << "Matriz de energía:\n";
+    std::cerr << "Matriz de energía:\n";
     imprimirMatriz(energia);
-    std::cout << "\n";
+    std::cerr << "\n";
 
     std::vector<int> seam = ejecutarAlgoritmo(energia, algoritmo);
     imprimirSeam(seam, energia);
@@ -74,26 +75,26 @@ void modoNumerico(const std::string& rutaEntrada, const std::string& algoritmo) 
             salida << (seam[f] + 1);   // índice 1-based
         }
         salida << "\n";
-        std::cout << "Resultado guardado en " << rutaSalida << "\n";
+        std::cerr << "Resultado guardado en " << rutaSalida << "\n";
     }
 }
 
 void modoImagen(const std::string& rutaImagen, const std::string& algoritmo, int iteraciones) {
     Imagen img(rutaImagen);
-    std::cout << "Imagen cargada: " << img.ancho() << "x" << img.alto() << " px\n";
+    std::cerr << "Imagen cargada: " << img.ancho() << "x" << img.alto() << " px\n";
 
     for (int i = 0; i < iteraciones; i++) {
         std::vector<int> seam = ejecutarAlgoritmo(img.obtenerMatrizEnergia(), algoritmo);
         img.eliminarSeam(seam);
 
         if ((i + 1) % 10 == 0 || i == iteraciones - 1)
-            std::cout << "Iteración " << (i + 1) << "/" << iteraciones
+            std::cerr << "Iteración " << (i + 1) << "/" << iteraciones
                       << " - Ancho actual: " << img.ancho() << " px\n";
     }
 
     std::string rutaSalida = "output/imagenes/resultado_" + algoritmo + ".png";
     img.guardar(rutaSalida);
-    std::cout << "Imagen guardada en " << rutaSalida << "\n";
+    std::cerr << "Imagen guardada en " << rutaSalida << "\n";
 }
 
 void imprimirUso() {

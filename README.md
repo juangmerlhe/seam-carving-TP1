@@ -30,8 +30,10 @@ Recibe una matriz de energía y devuelve la costura de mínima energía como ín
 ### Modo imagen
 
 Elimina N costuras de una imagen y guarda el resultado en `output/imagenes/`.
+Se incluye `img/muestra.png` (200×150 px) para prueba rápida:
 
 ```bash
+./seam --imagen img/muestra.png --algoritmo pd --iteraciones 20
 ./seam --imagen img/foto.jpg --algoritmo pd --iteraciones 50
 ```
 

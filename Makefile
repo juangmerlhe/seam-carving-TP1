@@ -12,7 +12,6 @@ SOURCES  = $(SRCDIR)/main.cpp \
 TARGET = seam
 
 BENCH_SOURCES = $(SRCDIR)/benchmark.cpp \
-                $(SRCDIR)/Imagen.cpp \
                 $(SRCDIR)/FuerzaBruta.cpp \
                 $(SRCDIR)/Backtracking.cpp \
                 $(SRCDIR)/ProgramacionDinamica.cpp
@@ -55,7 +54,7 @@ run-imagen: $(TARGET)
 # ─── Limpieza ─────────────────────────────────────────────────────────────────
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) benchmark
 
 clean-output:
 	rm -f $(OUTDIR)/numericos/* $(OUTDIR)/imagenes/*
