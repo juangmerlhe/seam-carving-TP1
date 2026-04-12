@@ -2,3 +2,5 @@ benchmark
 seam
 *.o
 experimentos/*.txt
+output/imagenes/*
+output/numericos/*
