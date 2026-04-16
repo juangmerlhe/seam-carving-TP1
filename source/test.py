@@ -29,14 +29,23 @@ def energia_seam(energia, seam):
 
 
 def run_cpp(alg):
-    """Corre el binario ./seam en modo numérico y extrae la energía total."""
+    exe = ".\\seam.exe" if os.name == "nt" else "./seam"
+
     result = subprocess.run(
-        ["./seam", "--numerico", INPUT_FILE, "--algoritmo", alg],
-        capture_output=True, text=True
+        [exe, "--numerico", INPUT_FILE, "--algoritmo", alg],
+        capture_output=True,
+        text=True
     )
-    for line in result.stdout.splitlines():
-        if "Energía total:" in line:
-            return float(line.split(":")[1].strip())
+
+    salida = result.stdout + "\n" + result.stderr
+
+    for line in salida.splitlines():
+        linea = line.lower().replace(",", ".")
+        if "total" in linea:
+            try:
+                return float(line.split(":")[1].strip().replace(",", "."))
+            except:
+                pass
     return None
 
 
